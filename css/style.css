@@ -1,0 +1,385 @@
+/* personal_portfolio.html */
+
+html,
+body {
+    display: grid;
+    grid-template-rows: auto 1fr auto;
+    min-height: 100vh;
+    margin: 0;
+    background-color: rgb(250, 251, 251);
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif
+}
+
+header {
+    
+    padding: 15px;
+    
+}
+
+h1, h2 {
+    font-weight: 600;
+    background-color: rgb(228, 241, 251);
+    padding: 20px;
+    border-radius: 10px;
+}
+
+
+main {
+    /* Margin auto was used to make sure the spacing on each side is equal  */
+
+    margin: auto;
+    max-width: 1000px;
+    
+}
+
+/* Margin-bottom was used to create space between the sections inside the main page */
+main section {
+
+    margin-bottom: 70px;
+    
+}
+
+#mainnavigation, ul, a {
+
+    display: flex;
+    justify-content: flex-end;
+    margin-right: 20px;
+    gap: 30px;
+    list-style: none;
+    text-decoration: none;
+    font-size: 20px;
+    color: rgb(64, 64, 64);
+
+}
+
+#mainnavigation a:hover {
+    color: rgb(216, 216, 216);
+    transition: 0.5s;
+}
+
+
+div {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+}
+
+
+
+p {
+    background-color:rgb(245, 240, 231);
+    padding: 50px;
+    border-radius: 50px;
+    max-width: 600px;
+    line-height: 27px;
+    font-size: 18px;
+    font-weight: 300;
+
+}
+
+
+
+#p1 {
+    background-color: rgb(245, 240, 231);
+}
+
+
+/* The liststyle id was created to change the lists of interests without disturbing the main navigation on top of the page */
+#liststyle {
+
+    display: flex;
+    flex-direction: column;
+    list-style: circle;
+    font-size: 20px;
+    gap: 30px;
+    
+}
+
+/* Project id was made to create the gap between the images */
+#project {
+    
+    display: flex;
+    flex-direction: row;
+    gap: 180px;
+    
+}
+/* Class project-images  was made to edit the images only, transition is inside the project images because thats the effect that is going to be triggered when something else happens */
+
+.project-images {
+    border-radius: 20px;
+    width: 400px;
+    height: 400px;
+    transition: 0.3s ease;
+}
+
+.project-images:hover {
+    transform: scale(1.1);
+}
+
+/* This id was created to edit the structure of the text of the project images */
+
+#p-gap {
+    
+    display: flex;
+    flex-direction: row;
+    gap: 290px;
+    
+}
+
+.p-style {
+
+background-color:  rgb(250, 251, 251);
+border-radius: 10px;
+font-size: medium;
+text-align: center;
+border: none;
+padding: 0;
+
+}
+
+
+table, th, td {
+
+/* Border-collapse makes the borders between table cells join together */
+    
+    border-collapse: collapse;
+    border: 1px solid black;
+    padding: 20px;
+    width: 1000px;
+
+}
+
+
+th {
+    background-color: rgb(245, 240, 231);
+}
+
+td {
+    font-weight: 300;
+}
+
+form {
+    height: 350px;
+}
+
+#contactform {
+
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    background-color: rgb(244, 242, 243);
+    border-radius: 10px;
+    padding: 100px;
+    
+}
+
+textarea {
+    height: 200px;
+}
+
+button {
+
+    margin-left: 700px;
+    width: 100px;
+    height: 150px;
+    margin-top: 10px;
+    border-radius: 5px;
+    border: 0.5px solid black;
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    font-size: medium;
+    font-weight: 300;
+    background-color: #eaf0e9;
+}
+
+button:hover {
+    background-color: rgb(203, 203, 203);
+    transition: 0.5s;
+}
+
+/* The focus pseudo class was used to highlight the outlines of the inputs and textarea. The pseudo class "focus" is for styling an element while it has focus*/
+
+input:focus {
+    outline: 1px solid rgb(142, 201, 188);
+}
+
+textarea:focus {
+     outline: 1px solid rgb(142, 201, 188);
+}
+
+footer {
+    display: flex;
+    justify-content: center;
+    gap: 200px;
+    background-color: rgb(228, 241, 251);
+    padding: 40px;
+}
+
+footer div {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    
+}
+
+footer ul  {
+    display: flex;
+    flex-direction: column;
+    font-weight: 300;
+    
+}
+
+
+footer h2 {
+    margin: 0;
+    margin-left: 15px;
+
+}
+
+
+
+strong {
+    font-weight: 600;
+}
+
+
+/* projects.html */
+
+.p-width {
+
+max-width: 1000px;
+}
+
+
+/*The transition and transform was to create an zoom in effect on the images of the page*/
+
+.imghover {
+    width: 700px;
+    height: 700px;
+    transition: 0.3s ease;
+    border-radius: 10px;
+    margin: 40px;
+
+}
+
+.imghover:hover {
+    transform: scale(1.1) ;
+}
+
+.undertext {
+    background-color: rgb(250, 251, 251);
+    border: 0.5px solid black;
+    padding: 20px;
+    width: 150px;
+    margin-left: 40px;
+    
+}
+
+
+
+/*Media queries mobile/tablet*/
+
+@media screen and (max-width: 700px) {
+
+    #mainnavigation, ul, a {
+        font-size: 32px;
+        gap: 30px;
+    }
+
+    h1, h2 {
+        font-size: 50px;
+        padding: 40px;
+    }
+
+   p {
+    padding: 45px;
+    max-width: 500px;
+    font-size: 25px;
+    line-height: 35px;
+    margin-left: 10px;
+
+   }
+
+   #liststyle {
+    font-size: 30px;
+   }
+
+   input {
+    padding: 10px;
+    
+   }
+
+   textarea {
+    padding: 20px;
+   }
+
+
+   #contactform {
+    padding: 30px 20px;
+    font-size: 25px;
+    height: auto;
+   }
+
+   input {
+    font-size: 20px;
+   }
+
+   button {
+    height: 70px;
+    width: 150px;
+    font-size: 30px;
+    margin-left: auto;
+    
+    
+   }
+
+   table {
+    font-size: 25px;
+   }
+
+   #project {
+    display: flex;
+    flex-direction: column;
+
+   }
+
+   .project-images {
+    height: 900px;
+    width: 900px;
+    
+   }
+
+   .undertext {
+    width: 200px;
+    margin-left: 40px;
+   }
+
+   .p-width {
+    width: 800px;
+   }
+
+   #aboutme-img {
+    margin-left: 10px;
+   }
+
+   footer {
+    display: flex;
+    justify-content: space-between;
+    gap: 80px;
+    padding: 90px;
+   }
+
+   .footer-title {
+    font-size: 40px;
+    margin: 0;
+    padding: 0;
+   }
+
+   footer ul {
+    margin: 0;
+    padding: 0;
+   }
+
+}
+
+
+ 
