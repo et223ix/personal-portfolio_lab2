@@ -8,31 +8,59 @@
     <link rel="stylesheet" href="../css/feedback.css">
     <script src="../js/feedback.js" defer></script>
 </head>
+
 <body>
 
     <header>
 
         <nav id="mainnavigation">
             <ul>
-                <li><a href="#aboutme">About me</a></li>
-                <li><a href="#interests">Interests</a></li>
+                <li><a href="personal_portfolio.html">About me</a></li>
                 <li><a href=projects.html>Projects</a></li>
-                <li><a href="#futuregoals">Future goals</a></li>
-                <li><a href="#contactme">Contact me</a></li>
+                 <li><a href="../portfolio-website/feedback.html">Feedback</a></li>
+                
             </ul>
         </nav>
 
     </header>
     
-<main>
+<main id="feedback">
 
+    <section>
 
+    <h2>Feedback</h2>
+    
 
+    <form id="contactform" action="mailto:elte2601@student.miun.se" method="post" enctype="text/plain">
+
+        <label for="name">Full Name</label>
+        <input type="text" id="name" placeholder="">
+
+        <label for="email">Email</label>
+        <input type="email" id="email" placeholder="">
+
+        <label for="topic">Topic of interests</label>
+        <input type="topic" id="topic" placeholder="">
+
+        <label for="message">Comments</label>
+        <textarea name="message"></textarea>
+
+        <label for="url">Website</label>
+        <input type="url" id="url" placeholder="">
+         
+
+         <button>Send</button>
+
+        
+    </form>
+
+    
+</section>
 
 
 </main>
 
-<footer>
+<footer id="footerfeedback">
 
 
     <div>
@@ -61,7 +89,6 @@
     </div>
 
 </footer>
-
 
 </body>
 </html>
