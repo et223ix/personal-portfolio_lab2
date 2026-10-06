@@ -143,7 +143,7 @@ table, th, td {
 /* Border-collapse makes the borders between table cells join together */
     
     border-collapse: collapse;
-    border: 1px solid black;
+    border: 1px solid #ccc;
     padding: 20px;
     width: 1000px;
 
@@ -174,7 +174,10 @@ form {
 }
 
 textarea {
-    height: 200px;
+    
+    min-height: 30px;
+    padding: 10px;
+    
 }
 
 button {
@@ -184,26 +187,39 @@ button {
     height: 150px;
     margin-top: 10px;
     border-radius: 5px;
-    border: 0.5px solid black;
+    border: 0.5px solid rgb(144, 144, 144);
     font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
     font-size: medium;
     font-weight: 300;
     background-color: #eaf0e9;
+    cursor: pointer;
 }
 
 button:hover {
-    background-color: rgb(203, 203, 203);
+    background-color: #d4e0d1;
     transition: 0.5s;
 }
+
+input {
+    border: 1px solid #ccc;
+    padding: 5px;
+}
+
+input, textarea {
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+
 
 /* The focus pseudo class was used to highlight the outlines of the inputs and textarea. The pseudo class "focus" is for styling an element while it has focus*/
 
 input:focus {
-    outline: 1px solid rgb(142, 201, 188);
+    outline: 1px solid rgb(13, 67, 214);
 }
 
 textarea:focus {
-     outline: 1px solid rgb(142, 201, 188);
+     outline: 1px solid rgb(13, 67, 214);
 }
 
 footer {
@@ -340,6 +356,7 @@ max-width: 1000px;
     width: 150px;
     font-size: 30px;
     margin-left: auto;
+    cursor: pointer;
     
     
    }
