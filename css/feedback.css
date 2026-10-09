@@ -31,7 +31,33 @@ select {
     transition: border-color 0.2s ease, box-shadow 0.2s ease;
 }
 
-/*Focus state*/
+#comment-counter {
+    background: none;
+    padding: 0px;
+    margin: 0px;
+    font-size: 14px;
+}
+
+
+
+#contactformsecond {
+    min-height: 470px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    background-color: rgb(244, 242, 243);
+    border-radius: 10px;
+    padding: 100px;
+}
+
+textarea {
+        font-size: 14px;
+        font-family: arial, sans-serif;
+    }
+
+
+
+/*Focus state stylement*/
 
 input:focus, 
 textarea:focus, 
@@ -41,7 +67,7 @@ select:focus {
     
 }
 
-/*Error state*/
+/*Error state stylement*/
 
 input.error, 
 textarea.error, 
@@ -49,13 +75,15 @@ select.error {
     border-color: red;
 }
 
-/*Valid state*/
+/*Valid state stylement*/
 
 input.valid, 
 textarea.valid, 
 select.valid {
     border-color: green;
 }
+
+/*Error message stylement*/
 
 .error-message {
     padding: 0px;
@@ -64,15 +92,7 @@ select.valid {
     background-color: none;
 }
 
-#contactformsecond {
-    min-height: 450px;
-    display: flex;
-    flex-direction: column;
-    gap: 10px;
-    background-color: rgb(244, 242, 243);
-    border-radius: 10px;
-    padding: 100px;
-}
+
 
 /* The footer title had line breaks this helped the line break to disappear */
 
@@ -89,10 +109,19 @@ select.valid {
     }
 
     #contactformsecond {
-        min-height: 600px;
+        min-height: 640px;
     }
     
     label {
         font-size: 25px;
+    }
+
+    textarea {
+        font-size: 20px;
+        font-family: arial, sans-serif;
+    }
+
+    #comment-counter {
+        font-size: 23px;
     }
 }
