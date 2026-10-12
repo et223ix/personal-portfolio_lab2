@@ -36,6 +36,7 @@ select {
     padding: 0px;
     margin: 0px;
     font-size: 14px;
+    font-weight: 400;
 }
 
 
@@ -90,6 +91,18 @@ select.valid {
     margin: 0px;
     color: red;
     background-color: none;
+}
+
+#name-error {
+    background: none;
+    padding: 0px;
+    margin: 0px;
+    font-size: 14px;
+    font-weight: 400;
+}
+
+#comment-error {
+    background: none;
 }
 
 
