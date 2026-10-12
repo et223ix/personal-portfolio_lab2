@@ -18,7 +18,7 @@
 }
 
 #topic {
-    border: 1px solid #ccc;
+   
     border-radius: 5px;
     padding: 5px;
 }
@@ -38,8 +38,6 @@ select {
     font-size: 14px;
     font-weight: 400;
 }
-
-
 
 #contactformsecond {
     min-height: 470px;
@@ -73,7 +71,9 @@ select:focus {
 input.error, 
 textarea.error, 
 select.error {
-    border-color: red;
+
+    outline: 1px solid red;
+    
 }
 
 /*Valid state stylement*/
@@ -81,7 +81,7 @@ select.error {
 input.valid, 
 textarea.valid, 
 select.valid {
-    border-color: green;
+     outline: 1px solid green;
 }
 
 /*Error message stylement*/
@@ -91,20 +91,10 @@ select.valid {
     margin: 0px;
     color: red;
     background-color: none;
-}
-
-#name-error {
     background: none;
-    padding: 0px;
-    margin: 0px;
     font-size: 14px;
     font-weight: 400;
 }
-
-#comment-error {
-    background: none;
-}
-
 
 
 /* The footer title had line breaks this helped the line break to disappear */
@@ -122,7 +112,7 @@ select.valid {
     }
 
     #contactformsecond {
-        min-height: 640px;
+        min-height: 700px;
     }
     
     label {
@@ -136,5 +126,9 @@ select.valid {
 
     #comment-counter {
         font-size: 23px;
+    }
+
+    .error-message {
+        font-size: 18px;
     }
 }

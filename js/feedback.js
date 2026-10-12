@@ -28,34 +28,116 @@ const statusMessage = document.getElementById("form-status")
 const counter = document.getElementById("comment-counter")
 const form = document.getElementById("contactformsecond")
 
+
 /*=========================================
             VALIDATING FUNCTIONS
 ==========================================*/
 
-/*NAME*/
-function validateName() {}
-/* VALIDATING EMAIL*/
-function validateEmail() {}
-/* VALIDATING TOPIC*/
-function validateTopic() {}
-/* VALIDATING COMMENTS*/
-function validateComment() {}
-/* VALIDATING URL*/
-function validateUrl() {}
+/*==NAME==*/
+function validateName() {
+
+    const fullName = nameInput.value.trim() /* Gathers the name and removes extra spacing in the beginning and at the end*/
+
+    /*Makes sure the name isn't empty*/
+    if (fullName === "") {
+        showFieldError(nameInput, nameError, "Please enter your full name.")
+        return false
+    }
+    /*Makes sure the name contains at least 2 characters*/
+    if (fullName.length < 2) {
+        showFieldError(nameInput, nameError, "Name must be at least 2 characters long.")
+        return false
+    }
+
+    /*Controls that the name contains right kind of characters*/
+    const namePattern = /^[\p{L}\p{M} '\u2019-]+$/u
+
+    if (!namePattern.test(fullName)) {
+        showFieldError(nameInput, nameError, "Name can only contain letters, spaces, apostrophes, and hyphens.")
+        return false
+    }
+
+    /*Removes error message if the name has correct characters*/
+    clearFieldError(nameInput, nameError)
+    return true
+}
+
+
+/* ==VALIDATING EMAIL==*/
+function validateEmail() {
+
+    const email = emailInput.value.trim()
+
+    if (email === "") {
+
+        showFieldError(emailInput, emailError, "Please enter your email address.") 
+
+        return false
+    }
+
+    const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/
+
+    if (!emailPattern.test(email)) {
+
+        showFieldError(emailInput, emailError, "Please enter a valid email address.")
+
+        return false
+    }
+
+    clearFieldError(emailInput, emailError)
+
+    return true
+}
+
+
+/* ==VALIDATING TOPIC==*/
+function validateTopic() {
+
+    if (topicInput.value === "") {
+        showFieldError(topicInput,topicError, "Please select a topic.")
+        return false 
+    }
+
+    clearFieldError(topicInput, topicError)
+    return true
+
+}
+
+
+/* ==VALIDATING COMMENTS==*/
+function validateComment() {
+    const comment = commentInput.value.trim()
+
+    if (comment.length < 15) {
+        showFieldError(commentInput, commentError, "Your comment must be at least 15 characters long.")
+        return false
+    }
+
+    clearFieldError(commentInput, commentError)
+    return true
+}
 
 
 /*=========================================
         ERROR MESSAGE FUNCTIONS
 ==========================================*/
 
+//Shows an error message an adds an red border around the input field
 
-function showFieldError () {}
+function showFieldError (input, errorElement, message) {
+    errorElement.textContent = message
+    input.classList.add("error")
+    input.classList.remove("valid")
+}
 
-//Show an error
+//Clears the error message and adds a green border around the input field
 
-function clearFieldError () {}
+function clearFieldError (input, errorElement) {
+    errorElement.textContent = ""
+    input.classList.remove("error")
+    input.classList.add("valid")
+}
 
-//Clear an error
 
 /*=========================================
             RESET FORM FUNCTION
@@ -68,34 +150,32 @@ function resetForm() {}
             EVENT LISTENERS
 ==========================================*/
 
-/* Comment Counter function - else/if to change color - count + to insert the counting function of the characters */
 
+nameInput.addEventListener("input", validateName)
+emailInput.addEventListener("input", validateEmail)
+topicInput.addEventListener("change", validateTopic)
+commentInput.addEventListener("input", function() {
 
-commentInput.addEventListener("input", function () {
+    /*Counts the number of characters the user has typed in*/
+    const count = commentInput.value.length 
 
-
-    /*  const text gathers the text that the user types in
-        const count counts the number of characters in the text
-    */ 
-
-    const text = commentInput.value
-    const count = text.length
-
-    counter.textContent = count + " characters. Minimum 15 characters."
-
-
-    if (count === 0) {
-        counter.style.color = "black"
-    }
-
-    else if (count < 15) {
+    /*Updates the character counter everytime the user types in*/
+    counter.textContent = count + " characters. Minimum 15 characters." 
+    
+    /*If characters are less than 15, the text turns red */
+    if (count < 15) {
         counter.style.color = "red"
-        
-    } else {
+    }
+      /*If its 15 or more characters the text turns green */
+    else {
         counter.style.color = "green"
     }
 
+
+    /*Controls if the comment meets the minimum lenght*/
+    validateComment() 
 })
+
 
 /*=========================================
             FORM SUBMISSION
