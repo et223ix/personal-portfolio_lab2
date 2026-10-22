@@ -3,6 +3,8 @@
                 DOM ELEMENTS
 ==========================================*/
 
+/*======Gathering the form elements so that the validation functions and event listeners can reuse the same references======*/
+
 /*Input fields*/
 
 const nameInput = document.getElementById("name")
@@ -27,16 +29,20 @@ const clearButton = document.getElementById("clearbutton")
 const statusMessage = document.getElementById("form-status")
 const counter = document.getElementById("comment-counter")
 const form = document.getElementById("contactformsecond")
+const submitButton = document.getElementById("submitbutton")
 
 
 /*=========================================
             VALIDATING FUNCTIONS
 ==========================================*/
 
+/*/======Each validation checks one field and returns false if its not valid and true if its valid. The showFieldError handles the visual error messages while the clearFieldError removes the error message if the users inputs are valid======*/
+
 /*==NAME==*/
 function validateName() {
 
-    const fullName = nameInput.value.trim() /* Gathers the name and removes extra spacing in the beginning and at the end*/
+    /* Gathers the value from the nameinput and removes extra spacing in the beginning and at the end with trim()*/
+    const fullName = nameInput.value.trim() 
 
     /*Makes sure the name isn't empty*/
     if (fullName === "") {
@@ -77,6 +83,8 @@ function validateEmail() {
 
     const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/
 
+    /* !emailPattern.test(email) means if the email doesn't match the pattern return an error  */
+
     if (!emailPattern.test(email)) {
 
         showFieldError(emailInput, emailError, "Please enter a valid email address.")
@@ -93,6 +101,7 @@ function validateEmail() {
 /* ==VALIDATING TOPIC==*/
 function validateTopic() {
 
+    /*If an topic isn't picked/empty then return an error message */
     if (topicInput.value === "") {
         showFieldError(topicInput,topicError, "Please select a topic.")
         return false 
@@ -108,6 +117,7 @@ function validateTopic() {
 function validateComment() {
     const comment = commentInput.value.trim()
 
+    /* comment.lenght < 15 implies that if the characters are less than 15, return an error message */
     if (comment.length < 15) {
         showFieldError(commentInput, commentError, "Your comment must be at least 15 characters long.")
         return false
@@ -122,7 +132,9 @@ function validateComment() {
         ERROR MESSAGE FUNCTIONS
 ==========================================*/
 
-//Shows an error message an adds an red border around the input field
+/*Adding an error message with a red border aorund the input field and removes the valid message with the green border*/
+
+/*ClassList connects the messages to the class "error and valid" in CSS and uses its styling*/
 
 function showFieldError (input, errorElement, message) {
     errorElement.textContent = message
@@ -130,7 +142,7 @@ function showFieldError (input, errorElement, message) {
     input.classList.remove("valid")
 }
 
-//Clears the error message and adds a green border around the input field
+//Removes the error message and its red border and instead adds a valid message with a green border around the input field
 
 function clearFieldError (input, errorElement) {
     errorElement.textContent = ""
@@ -143,14 +155,42 @@ function clearFieldError (input, errorElement) {
             RESET FORM FUNCTION
 ==========================================*/
 
-function resetForm() {}
+function resetForm() {
+
+/* Resets all form fields to their original values */
+form.reset()
+
+/*Stores all input fields in an array so that they can be cleared all together */
+const inputs = [nameInput, emailInput, topicInput, commentInput, urlInput]
+
+/*Stores all error messages in an array so that they can be cleared all together */
+const errors = [nameError, emailError, topicError, commentError, urlError]
+
+/*Goes through each input field in the array and removes both the error and valid classes */
+inputs.forEach(function(input) {
+    input.classList.remove("error", "valid")
+})
+
+/*Goes through each error message in the array and clears its text */
+errors.forEach(function(error) {
+    error.textContent = ""
+
+})
+
+/*Resets the color of the live character counter-paragraph back to standard color*/
+counter.style.color = "black"
+
+/* Resets the characters counter to 0*/
+counter.textContent = "0 characters. Minimum 15 characters"
+
+}
 
 
 /*=========================================
             EVENT LISTENERS
 ==========================================*/
 
-
+/*Listens for an event and runs the function when something happens */
 nameInput.addEventListener("input", validateName)
 emailInput.addEventListener("input", validateEmail)
 topicInput.addEventListener("change", validateTopic)
@@ -171,18 +211,40 @@ commentInput.addEventListener("input", function() {
         counter.style.color = "green"
     }
 
-
     /*Controls if the comment meets the minimum lenght*/
     validateComment() 
 })
+
+/*Runs the resetForm function when the user clicks the clear button */
+clearButton.addEventListener("click", resetForm)
 
 
 /*=========================================
             FORM SUBMISSION
 ==========================================*/
 
-/*=========================================
-            CLEAR BUTTON
-==========================================*/
+/* addEventListener listens for the submit event to happen*/
+form.addEventListener("submit", function(event) {
+
+    /* Prevents the site from reloading */
+    event.preventDefault()
+
+    /* Gathers the user's name and removes potential extra spaces */
+    const fullName = nameInput.value.trim()
+
+
+    /*Function runs to check if each field is valid */
+
+    const nameValid = validateName()
+    const emailValid = validateEmail()
+    const topicValid = validateTopic()
+    const commentValid = validateComment()
+
+    /* Stops the form submission if any field is invalid. !nameValid means not valid, || means or*/
+    if  (!nameValid || !emailValid || !topicValid || !commentValid) {
+
+        return
+    }
+})
 
 

@@ -61,7 +61,7 @@
         <label for="message">Comments</label>
         <textarea id="comment" name="message" aria-describedby="message-error"></textarea>
 
-        <div>
+        <div id="responsive-error">
         <p id="comment-counter">0 characters. Minimum 15 characters.</p>
         <p id="comment-error" class="error-message"> </p>
         </div>
@@ -70,8 +70,12 @@
         <input type="url" id="url" name="url" aria-describedby="url-error">
         <p id="url-error" class="error-message"> </p>
          
-         <button type="submit">Submit</button>
-         <button type="button" id="clearbutton">Clear</button>
+        
+        <div id="buttonalignment">
+        <button type="button" id="clearbutton">Clear</button>
+         <button type="submit" id="submitbutton">Submit</button>
+         </div>
+    
        
         <div id="form-status" role="status" aria-live="polite"></div>
 
