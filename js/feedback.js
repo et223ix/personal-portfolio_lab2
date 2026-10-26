@@ -127,6 +127,27 @@ function validateComment() {
     return true
 }
 
+/* ==VALIDATING URL== */
+
+function validateUrl() {
+
+    if (urlInput.value.trim() === "") {
+        urlInput.classList.remove("error", "valid")
+        urlError.textContent = ""
+        return true
+    }
+
+    if (urlInput.checkValidity ()) {
+        clearFieldError(urlInput, urlError)
+        return true
+    }
+
+    else {
+        showFieldError(urlInput, urlError, "Please enter a valid URL")
+        return false
+    }
+}
+
 
 /*=========================================
         ERROR MESSAGE FUNCTIONS
@@ -202,8 +223,18 @@ commentInput.addEventListener("input", function() {
     /*Updates the character counter everytime the user types in*/
     counter.textContent = count + " characters. Minimum 15 characters." 
     
-    /*If characters are less than 15, the text turns red */
-    if (count < 15) {
+    /*If characters are 0 color turns black, if less than 15 the text turns red, else green */
+    
+    if (count === 0) {
+        counter.style.color = "black"
+
+        /*This helps remove the error message when characters are on 0*/
+        commentError.textContent = ""
+        commentInput.classList.remove("error","valid")
+        return
+    }
+    
+    else if (count < 15) {
         counter.style.color = "red"
     }
       /*If its 15 or more characters the text turns green */
@@ -214,6 +245,8 @@ commentInput.addEventListener("input", function() {
     /*Controls if the comment meets the minimum lenght*/
     validateComment() 
 })
+
+urlInput.addEventListener("input", validateUrl)
 
 /*Runs the resetForm function when the user clicks the clear button */
 clearButton.addEventListener("click", resetForm)
@@ -239,12 +272,22 @@ form.addEventListener("submit", function(event) {
     const emailValid = validateEmail()
     const topicValid = validateTopic()
     const commentValid = validateComment()
+    const urlValid = validateURL()
 
     /* Stops the form submission if any field is invalid. !nameValid means not valid, || means or*/
-    if  (!nameValid || !emailValid || !topicValid || !commentValid) {
+    if  (!nameValid || !emailValid || !topicValid || !commentValid || !urlValid) {
 
         return
     }
+
+    resetForm ()
+
+    statusMessage.textContent = ` ✓ Thanks for your feedback, ${fullName}!`
+
+    setTimeout(function() {
+    statusMessage.textContent = ""
+
+    }, 4000)
 })
 
 

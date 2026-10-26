@@ -119,6 +119,16 @@ select.valid {
     gap: 10px;
 }
 
+#form-status {
+
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-end;
+    color: rgb(5, 152, 5);
+    font-size: large;
+    
+}
+
 
 /* The footer title had line breaks this helped the line break to disappear */
 
@@ -167,5 +177,13 @@ select.valid {
 
     #buttonalignment {
         margin-right: 60px;
+    }
+
+    #form-status {
+
+        display: flex;
+        justify-content: center;
+        margin-top: 40px;
+        font-size: xx-large;
     }
 }
