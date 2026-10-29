@@ -124,7 +124,7 @@ select.valid {
     display: flex;
     flex-direction: row;
     justify-content: flex-end;
-    color: rgb(5, 152, 5);
+    color: rgb(31, 31, 31);
     font-size: large;
     
 }
@@ -145,7 +145,7 @@ select.valid {
     }
 
     #contactformsecond {
-        min-height: 800px;
+        min-height: 850px;
     }
     
     label {

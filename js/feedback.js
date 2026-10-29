@@ -81,14 +81,9 @@ function validateEmail() {
         return false
     }
 
-    const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/
-
-    /* !emailPattern.test(email) means if the email doesn't match the pattern return an error  */
-
-    if (!emailPattern.test(email)) {
-
+    if (!emailInput.checkValidity()) {
         showFieldError(emailInput, emailError, "Please enter a valid email address.")
-
+        
         return false
     }
 
@@ -236,10 +231,13 @@ commentInput.addEventListener("input", function() {
     
     else if (count < 15) {
         counter.style.color = "red"
+        counter.textContent = count + " characters."
+    
     }
       /*If its 15 or more characters the text turns green */
     else {
         counter.style.color = "green"
+        counter.textContent = count + " characters."
     }
 
     /*Controls if the comment meets the minimum lenght*/
@@ -272,7 +270,7 @@ form.addEventListener("submit", function(event) {
     const emailValid = validateEmail()
     const topicValid = validateTopic()
     const commentValid = validateComment()
-    const urlValid = validateURL()
+    const urlValid = validateUrl()
 
     /* Stops the form submission if any field is invalid. !nameValid means not valid, || means or*/
     if  (!nameValid || !emailValid || !topicValid || !commentValid || !urlValid) {
