@@ -278,10 +278,13 @@ form.addEventListener("submit", function(event) {
         return
     }
 
+    /* Resets the form after succeed submission */
     resetForm ()
 
+    /* Success message */
     statusMessage.textContent = ` ✓ Thanks for your feedback, ${fullName}!`
 
+    /* This function removes the success message after 4 second */
     setTimeout(function() {
     statusMessage.textContent = ""
 
